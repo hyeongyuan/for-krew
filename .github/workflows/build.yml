@@ -28,9 +28,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: release-note.md
           files: |
             dist/ForKrew*
             dist/latest*.yml
+          if: matrix.os == 'macos-latest'
+          body_path: release-note.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
