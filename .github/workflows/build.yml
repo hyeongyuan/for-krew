@@ -26,6 +26,8 @@ jobs:
         run: npm run dist
       - name: package-version
         run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+      - name: product-name
+        run: node -p -e '`PRODUCT_NAME=${require("./package.json").productName}`' >> $GITHUB_ENV
       - name: package-version-to-git-tag
         uses: pkgdeps/git-tag-action@v2
         with:
@@ -38,6 +40,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: "dist/ForKrew*"
+          files: "dist/${{ env.PRODUCT_NAME }}-*.*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
