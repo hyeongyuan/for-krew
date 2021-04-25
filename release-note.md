@@ -3,7 +3,7 @@
 - #### 🚨 x.x.x-test릴리즈에 Prod 업로드 금지!!
 - 필수파일
   - win - .yml, .blockmap, .exe
-  - mac - .yml, zip, dmg
+  - mac - .yml, .zip, .dmg
 - 동일 phase는 삭제 후 업로드
 - 릴리즈 생성, 업데이트 후 호출
   - https://sandbox-pos-order.devel.kakao.com/updater/init?overwrite=true

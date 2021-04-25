@@ -24,14 +24,24 @@ jobs:
         run: npm install
       - name: Build
         run: npm run dist
-      - name: Release
+      - name: Release macos
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: matrix.os == 'macos-latest' && startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: release-note.md
+          files: |
+            dist/ForKrew*.dmg
+            dist/ForKrew*.zip
+            dist/latest*.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release windows
+        uses: softprops/action-gh-release@v1
+        if: matrix.os == 'windows-latest' && startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            dist/ForKrew*
+            dist/ForKrew*.exe
+            dist/ForKrew*.blockmap
             dist/latest*.yml
-          if: matrix.os == 'macos-latest'
-          body_path: release-note.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
