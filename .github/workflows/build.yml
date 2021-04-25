@@ -40,9 +40,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
+          body_path: release-note.md
           files: |
-            "dist/${{ env.PRODUCT_NAME }}-*.dmg"
-            "dist/${{ env.PRODUCT_NAME }}-*.zip"
+            dist/${{ env.PRODUCT_NAME }}-*.dmg
+            dist/${{ env.PRODUCT_NAME }}-*.zip
             dist/latest-mac.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
