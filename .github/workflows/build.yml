@@ -27,6 +27,14 @@ jobs:
         run: npm install
       - name: Build electron
         run: npm run dist
+      - name: Update Release Draft
+        uses: release-drafter/release-drafter@v5
+        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        # with:
+        #   config-name: my-config.yml
+        #   disable-autolabeler: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release macos
         uses: softprops/action-gh-release@v1
         if: matrix.os == 'macos-latest' && startsWith(github.ref, 'refs/tags/')
@@ -48,3 +56,4 @@ jobs:
             dist/latest*.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
