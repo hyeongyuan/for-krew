@@ -1,4 +1,4 @@
-name: "Build"
+name: Package and Release
 
 on:
   push:
@@ -7,10 +7,13 @@ on:
 
 jobs:
   build:
+
     runs-on: ${{ matrix.os }}
+    
     strategy:
       matrix:
         os: [macos-latest, windows-latest] #[macos-latest, ubuntu-latest, windows-latest]
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,7 +25,7 @@ jobs:
           node-version: '12'
       - name: Install dependencies
         run: npm install
-      - name: Build
+      - name: Build electron
         run: npm run dist
       - name: Release macos
         uses: softprops/action-gh-release@v1
