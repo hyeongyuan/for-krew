@@ -1,18 +1,10 @@
+## 수정사항
+
+- [325e17a0]fix: master -> main
+- [e3f7c894]fix: Fix build.yml
 ### 참고
 - #### 🚨 Prod 가 포함된 릴리즈는 수정 금지!!
 - #### 🚨 x.x.x-test릴리즈에 Prod 업로드 금지!!
 - 필수파일
   - win - .yml, .blockmap, .exe
   - mac - .yml, .zip, .dmg
-- 동일 phase는 삭제 후 업로드
-- 릴리즈 생성, 업데이트 후 호출
-  - https://sandbox-pos-order.devel.kakao.com/updater/init?overwrite=true
-  - https://beta-pos.kakao.com/updater/init?overwrite=true
-  - https://pos.kakao.com/updater/init?overwrite=true
-- 윈도우 다운로드
-  - https://sandbox-pos-order.devel.kakao.com/updater/install?phase=sandbox&platform=win
-  - https://beta-pos.kakao.com/updater/install?phase=beta&platform=win
-  - https://pos.kakao.com/updater/install?phase=prod&platform=win
-- 맥 다운로드
-  - https://sandbox-pos-order.devel.kakao.com/updater/install?phase=sandbox&platform=darwin
-  - https://beta-pos.kakao.com/updater/install?phase=beta&platform=darwin
